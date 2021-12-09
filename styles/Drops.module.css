@@ -1,0 +1,32 @@
+.header {
+  padding: 108px 0 var(--padding-wide);
+}
+
+@media all and (max-width: 767px) {
+  .header {
+    padding: 80px 0px 30px;
+  }
+}
+
+@media all and (min-width: 2400px) {
+  .header {
+    padding: 160px;
+  }
+}
+
+.dropsTitle {
+  color: var(--color-black);
+  font-size: calc(var(--font-size-2x) * 2);
+}
+
+.content {
+  position: relative;
+  flex: 1;
+  line-height: 1.5;
+}
+
+.container {
+  position: relative;
+  padding: var(--padding-narrow) var(--padding-normal);
+  margin-top: 0;
+}

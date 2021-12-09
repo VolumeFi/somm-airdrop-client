@@ -1,0 +1,48 @@
+.account {
+  display: block;
+  min-width: 139px;
+}
+
+.account .connectBtn {
+  width: 100%;
+  background: linear-gradient(269.95deg, #E323FF 0.02%, #7517F8 97.45%);
+  border-radius: 8px;
+  padding: var(--padding-narrow);
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--color-white);
+  outline: none;
+}
+
+.info {
+  width: 100%;
+  background: var(--color-white);
+  border-radius: 11px;
+  border: 1.29306px solid #D3D3D3;
+  padding: var(--padding-narrow);
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--color-gray);
+  outline: none;
+}
+
+.info a {
+  display: flex;
+}
+
+.info img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.info p {
+  padding: 0 8px;
+  font-size: var(--font-size-small);
+  font-weight: bold;
+}
+
+.info span {
+  color: var(--color-gray);
+  font-weight: normal;
+}

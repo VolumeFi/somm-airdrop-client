@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #00101C;
+  color: #fff;
+}
+
+.container {
+  width: 100vw;
+  max-width: 100%;
+  min-height: calc(100vh -  151px);
+  margin-top: 151px;
+
+  &-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

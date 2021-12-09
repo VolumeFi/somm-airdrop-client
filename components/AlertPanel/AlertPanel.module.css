@@ -1,0 +1,29 @@
+.alertPanel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 21px 28px;
+  min-height: 73px;
+  border-radius: 12.2041px;
+  font-weight: bold;
+  height: fit-content;
+}
+
+.alertPanel.error {
+  background: #FCD0CF;
+  color: #DA100B;
+}
+.alertPanel.success {
+  background: #C5F2C7;
+  color: #2AB930;
+}
+
+.alertPanelIcon {
+  height: 31px;
+}
+
+.alertPanelText {
+  font-size: 23px;
+  line-height: 31px;
+  margin-left: 20px;
+}

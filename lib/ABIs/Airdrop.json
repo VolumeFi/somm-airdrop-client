@@ -1,0 +1,72 @@
+[
+  {
+    "stateMutability": "nonpayable",
+    "type": "constructor",
+    "inputs": [
+      { "name": "_somm_token", "type": "address" },
+      { "name": "_merkle_root", "type": "bytes32" },
+      { "name": "_gravity_bridge", "type": "address" }
+    ],
+    "outputs": []
+  },
+  {
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "claim",
+    "inputs": [
+      { "name": "receiver", "type": "address" },
+      { "name": "amount", "type": "uint256" },
+      { "name": "merkle_proof", "type": "bytes32[15]" }
+    ],
+    "outputs": [],
+    "gas": 68838
+  },
+  {
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "return_token",
+    "inputs": [],
+    "outputs": [],
+    "gas": 19298
+  },
+  {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "somm_token",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address" }],
+    "gas": 2586
+  },
+  {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "received",
+    "inputs": [{ "name": "arg0", "type": "address" }],
+    "outputs": [{ "name": "", "type": "bool" }],
+    "gas": 2888
+  },
+  {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "deadline",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "gas": 2646
+  },
+  {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "gravity_bridge",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address" }],
+    "gas": 2676
+  },
+  {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "merkle_root",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "bytes32" }],
+    "gas": 2706
+  }
+]

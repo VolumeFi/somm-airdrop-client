@@ -1,0 +1,143 @@
+.noRewardContainer {
+  background: white;
+  border-radius: 11px;
+  padding: 51px 77px;
+  max-width: 709px;
+  width: 100%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.noRewardContainer > h2 {
+  padding-top: 80px;
+}
+
+.noRewardContainer > p {
+  padding-bottom: 70px;
+}
+
+
+.homeContainer {
+  background: white;
+  border-radius: 11px;
+  padding: 51px 77px;
+  max-width: 709px;
+  width: 100%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 114px;
+}
+
+.homeContainer > h2 {
+  padding-top: 33px;
+}
+
+.homeContainer > p {
+  padding-top: 33px;
+}
+
+.rewardsPanel {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.rewardsItem {
+  display: flex;
+  width: 100%;
+  border-bottom: 1.99832px solid rgba(211, 211, 211, 0.5);
+  padding-bottom: 11px;
+  margin-bottom: 14px;
+}
+
+.rewardsItemText {
+  flex: 1;
+  color: var(--color-black2);
+  font-size: 20px;
+  line-height: 27px;
+  font-weight: bold;
+}
+
+.rewardsItemValue {
+  display: flex;
+  align-items: center;
+}
+
+.rewardsItemValue span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.rewardsItemValue img {
+  height: 31px;
+  margin-left: 6px;
+}
+
+.receivePanel {
+  border-radius: 10.5232px;
+  background: #EAEAEA;
+  border: 1.3154px solid #D3D3D3;
+  width: 100%;
+  padding: 22px 44px;
+  margin-top: 50px;
+}
+
+.receivePanel p {
+  color: var(--color-black2);
+  font-size: 25px;
+  letter-spacing: 0.02em;
+  line-height: 133.1%;
+}
+
+.receiveValue {
+  font-size: 46px;
+  line-height: 61px;
+  font-weight: bold;
+  display: flex;
+  margin-top: 5px;
+}
+
+.receiveValueText {
+  color: var(--color-black2);
+}
+
+.receiveValuePoints {
+  color: var(--color-divider);
+}
+
+.receiveValueImg {
+  width: 53px;
+  height: 53px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.receiveValueImg img {
+  height: 40px;
+}
+
+.claimButton {
+  width: 470px;
+  height: 67px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(269.95deg, #E323FF 0.02%, #7517F8 97.45%);
+  border-radius: 11px;
+  margin: 50px auto;
+  color: white;
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: bold;
+}
+
+.claimButton img {
+  margin-left: 30px;
+}
