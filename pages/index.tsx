@@ -1,25 +1,14 @@
 import { useState, useEffect, useMemo } from 'react'
 
-import { IAirdropRewards, getAirdropRewards } from '../utils/airdrop'
+import { IAirdropRewards, getAirdropRewards, sortRewardsData } from '../utils/airdrop'
 import { getOnlyDigitalValue, getOnlyPointsValue } from '../utils/number'
+import { makeMerkleTree, getMerkleProof } from '../utils/merkletree'
 
 import Button from 'components/Button/Button'
 import AlertPanel from '../components/AlertPanel/AlertPanel';
 
-import sha256 from 'crypto-js/sha256';
-import keccak256 from 'keccak256';
-
 import styles from 'styles/Airdrop.module.css'
 import BigNumber from 'bignumber.js';
-
-interface IRewardsItem {
-  text: string
-  value: string
-}
-
-interface IClaimRewards {
-  rewards: IAirdropRewards
-}
 
 const NoAirdrop = () => {
   return (
@@ -40,7 +29,7 @@ const AlreadyClaimed = () => {
   )
 }
 
-const RewardsItem = ({ text, value } : IRewardsItem ) => {
+const RewardsItem = ({ text, value }) => {
   return (
     <div className={styles.rewardsItem}>
       <div className={styles.rewardsItemText}>{text}</div>
@@ -52,7 +41,15 @@ const RewardsItem = ({ text, value } : IRewardsItem ) => {
   )
 }
 
-const ClaimRewards = ({ rewards }: IClaimRewards) => {
+const ClaimRewards = ({ rewards, library }) => {
+  
+  const [loading, setLoading] = useState(false)
+
+  const handleClaim = async () => {
+
+  
+  }
+
   return (
     <div className={styles.homeContainer}>
       <AlertPanel type="success" text="This wallet address is eligible for the airdrop!" />
@@ -79,9 +76,16 @@ const ClaimRewards = ({ rewards }: IClaimRewards) => {
         </div>
       </div>
       
-      <Button className={styles.claimButton}>
-        <span>Start your claim process</span>
-        <img src="/assets/right-arrow.png" />
+      <Button 
+        className={styles.claimButton}
+        onClick={(e) => {
+          
+          handleClaim()
+        }}
+        disabled={loading}
+      >
+        <span>{loading ? 'Claiming...' : 'Start your claim process'}</span>
+        {!loading && <img src="/assets/right-arrow.png" />}
       </Button>
     </div>
   )
@@ -116,7 +120,7 @@ export default function Home({ library, state, dispatch }) {
         <NoAirdrop />
       )}
       {rewards.total.comparedTo(new BigNumber(0)) > 0 && (
-        <ClaimRewards rewards={rewards} />
+        <ClaimRewards rewards={rewards} library={library}/>
       )}
     </div>
   )

@@ -159,33 +159,53 @@ export default function Layout({
             />
           </div>
         </header>
-        {(library && state.account.address) ? (
-          React.cloneElement(children, {
-            state,
-            dispatch,
-            library,
-            networks,
-          })
-        ) : (
+        {(library && networks.includes(state.account.network)) ?
+          (
+            <>
+              {state.account.address ? (
+                React.cloneElement(children, {
+                  state,
+                  dispatch,
+                  library,
+                  networks,
+                })
+              ) : (
+                  <div className={styles.noAccountContainer}>
+                    <img src="/assets/landing-logo-1.png" className={styles.noAcountBg} />
+                    <div className={styles.noAccountLanding}>
+                      <div className={styles.noAccountLandingLogo}>
+                        <img src="/assets/sommelier.png" />
+                      </div>
+                      <span>Introducing SOMM</span>
+                      <h1>Sommelier Airdrop</h1>
+                      <Account
+                        caption={<div className={styles.noAccountConnect}>Connect to Wallet<img src="/assets/right-arrow.png" /></div>}
+                        library={library}
+                        {...state}
+                        loading={loading}
+                        dispatch={dispatch}
+                        connectWallet={connectWallet}
+                      />
+                    </div>
+                  </div>
+                )}
+            </>
+          ) : (
             <div className={styles.noAccountContainer}>
               <img src="/assets/landing-logo-1.png" className={styles.noAcountBg} />
               <div className={styles.noAccountLanding}>
-                <div className={styles.noAccountLandingLogo}>
-                  <img src="/assets/sommelier.png" />
-                </div>
-                <span>Introducing SOMM</span>
-                <h1>Sommelier Airdrop</h1>
-                <Account
-                  caption={<div className={styles.noAccountConnect}>Connect to Wallet<img src="/assets/right-arrow.png"/></div>}
-                  library={library}
-                  {...state}
-                  loading={loading}
-                  dispatch={dispatch}
-                  connectWallet={connectWallet}
-                />
+                Please connect to following networks
+                <br />
+                <ul>
+                  {networks.map((network, idx) => (
+                    <li key={idx}>{networkLabels[network]}</li>
+                  ))}
+                </ul>
               </div>
             </div>
-          )}
+          )
+        }
+        
       </main>
     </>
   )

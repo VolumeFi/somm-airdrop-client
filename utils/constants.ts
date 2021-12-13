@@ -2,11 +2,11 @@ export const ZERO = '0x0000000000000000000000000000000000000000'
 
 export const addresses = {
   1: {
-    SommToken: '',
-    Airdrop: '',
+    SommToken: "",
+    Airdrop: "",
   },
   4: {
-    SommToken: '0x1B96Df7b975AA2246021119690c7ff809024E2a8',
-    Airdrop: '0x8e224b1A8317eEb185960B5d0Fa0Ed1341Ba9257',
+    SommToken: "0xa5833eE27791F526786DA518ca12C535a7BB76C1",
+    Airdrop: "0x5694eF9209A31F587bBe8f8A569281876B50079a",
   },
-}
+};
