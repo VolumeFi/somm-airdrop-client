@@ -15,6 +15,7 @@
     "bignumber.js": "^9.0.1",
     "evm-chains": "^0.2.0",
     "graphql": "^15.5.0",
+    "keccak256": "^1.0.6",
     "merkletreejs": "^0.2.26",
     "moment": "^2.29.1",
     "multiselect-react-dropdown": "^2.0.4",
