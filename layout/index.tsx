@@ -173,7 +173,7 @@ export default function Layout({
         )}
         {state.account.address && (
           <>
-            {(library && networks.includes(state.account.network)) ?
+            {(networks.includes(state.account.network && library)) ?
               React.cloneElement(children, {
                 state,
                 dispatch,
