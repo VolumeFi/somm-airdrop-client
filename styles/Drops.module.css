@@ -14,11 +14,6 @@
   }
 }
 
-.dropsTitle {
-  color: var(--color-black);
-  font-size: calc(var(--font-size-2x) * 2);
-}
-
 .content {
   position: relative;
   flex: 1;
