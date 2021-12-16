@@ -1,25 +1,15 @@
 import { useState, useEffect, useMemo } from 'react'
 
-import { IAirdropRewards, getAirdropRewards } from '../utils/airdrop'
+import { IAirdropRewards, getAirdropRewards, sortRewardsData } from '../utils/airdrop'
 import { getOnlyDigitalValue, getOnlyPointsValue } from '../utils/number'
+import { makeMerkleTree, getMerkleProof } from '../utils/merkletree'
 
+import { ClaimAmount, CommunityDistribution, ConfirmWallet } from 'components/Airdrop'
 import Button from 'components/Button/Button'
 import AlertPanel from '../components/AlertPanel/AlertPanel';
 
-import sha256 from 'crypto-js/sha256';
-import keccak256 from 'keccak256';
-
 import styles from 'styles/Airdrop.module.css'
 import BigNumber from 'bignumber.js';
-
-interface IRewardsItem {
-  text: string
-  value: string
-}
-
-interface IClaimRewards {
-  rewards: IAirdropRewards
-}
 
 const NoAirdrop = () => {
   return (
@@ -31,84 +21,93 @@ const NoAirdrop = () => {
   )
 }
 
-const AlreadyClaimed = () => {
-  return (
-    <div className={`${styles.noRewardContainer}`}>
-      <h2>You already have claimed.</h2>
-      <p>Please try with another wallet!</p>
-    </div>
-  )
-}
+const ClaimRewards = ({ rewards, library }) => {
+  
+  const [loading, setLoading] = useState(false)
+  const [step, setStep] = useState<number>(0)   // wizard view
 
-const RewardsItem = ({ text, value } : IRewardsItem ) => {
-  return (
-    <div className={styles.rewardsItem}>
-      <div className={styles.rewardsItemText}>{text}</div>
-      <div className={styles.rewardsItemValue}>
-        <span>{value}</span>
-        <img src="/assets/sommelier.png" />
-      </div>
-    </div>
-  )
-}
-
-const ClaimRewards = ({ rewards }: IClaimRewards) => {
-  return (
-    <div className={styles.homeContainer}>
-      <AlertPanel type="success" text="This wallet address is eligible for the airdrop!" />
-      <h2>SOMM community Rewards</h2>
-      <p>There are three types of wallet adresses that qualify for sommelier community rewards, below you will see what type of reward you are eligible for and the amount of tokens you will receive.</p>
-
-      <div className={styles.rewardsPanel}>
-        <RewardsItem text="Sommelier Pairings Participation" value={rewards.sommPairingParticipation.toFixed(0).toString()} />
-        <RewardsItem text="Sommelier Pairings Position-weighted" value={rewards.sommPairingPositionWeighted.toFixed(4).toString()} />
-        <RewardsItem text="Uniswap V3 LPs" value={rewards.uniswapV3LP.toFixed(4).toString()} />
-      </div>
-
-      <h2>Claim your tokens</h2>
-      <p>Your wallet is eligible for the airdrop! View your tokens below, and start the claim process. </p>
-
-      <div className={styles.receivePanel}>
-        <p>You will receive</p>
-        <div className={styles.receiveValue}>
-          <span className={styles.receiveValueText}>{`${getOnlyDigitalValue(rewards.total.toNumber())}${getOnlyPointsValue(rewards.total.toNumber()) > 0 ? '.' : ''}`}</span>
-          <span className={styles.receiveValuePoints}>{getOnlyPointsValue(rewards.total.toNumber()).toFixed(7).substring(2)}</span>
-          <div className={styles.receiveValueImg}>
-            <img src="/assets/sommelier.png" />
-          </div>
-        </div>
-      </div>
-      
-      <Button className={styles.claimButton}>
-        <span>Start your claim process</span>
-        <img src="/assets/right-arrow.png" />
-      </Button>
-    </div>
-  )
-}
-
-export default function Home({ library, state, dispatch }) {
-
-  const [received, setReceived] = useState<boolean>(false)
-  const [rewards, setRewards] = useState<IAirdropRewards>(getAirdropRewards(state.account.address.toLowerCase()))
+  const [received, setReceived] = useState<boolean>(false)  // already claimed ?
+  const [transactionStatus, setTransactionStatus] = useState<boolean>(false)
 
   useEffect(() => {
     const receivedClaim = async () => {
       if (library?.wallet?.address) {
-        const receivedStatus = await library.methods.Airdrop.received(library.wallet.address);
+        const receivedStatus = await library.methods.Airdrop.received(library.wallet.address)
         setReceived(receivedStatus);
       }
     }
     receivedClaim();
   }, [library?.wallet?.address])
 
-  if (received) {
-    return (
-      <div className='container container-center'>
-      <AlreadyClaimed />
-      </div>
+  const handleClaim = async () => {
+    setLoading(true)
+
+    const proof = getMerkleProof(library.wallet.address)
+
+    const transaction = library.methods.Airdrop.claim(
+      library.wallet.address,
+      new BigNumber(proof.amount),
+      proof.proof,
+      { from: library.wallet.address }
     )
+
+    try {
+      await transaction.send()
+
+      const receivedStatus = await library.methods.Airdrop.received(library.wallet.address);
+
+      if (receivedStatus) {
+        setTransactionStatus(true)
+      }
+
+      setReceived(receivedStatus)
+
+    } catch (e) {
+      setLoading(false)
+    }
+
+    setLoading(false)
   }
+
+  const handleRedirect = () => {
+    console.log('ddddddddddddddddddddddd')
+    console.log(library)
+    window.location.reload()
+  }
+
+  return (
+    <div className={styles.homeContainer}>
+      <div className={styles.homeIcon}>
+        <img src='assets/sommelier.png' />
+      </div>
+      {step === 0 && <ClaimAmount rewards={rewards} onStartClaim={() => setStep(step + 1)} />}
+      {step === 1 && <CommunityDistribution onNext={() => setStep(step + 1)} onBack={() => setStep(step - 1)} />}
+      {step === 2 && (
+        <ConfirmWallet
+          loading={loading}
+          received={received}
+          transactionStatus={transactionStatus}
+          rewards={rewards}
+          onBack={() => setStep(step - 1)}
+          onClaim={() => handleClaim()}
+          onRedirect={() => handleRedirect()}
+        />
+      )}
+    </div>
+  )
+}
+
+export default function Home({ library, state, dispatch }) {
+
+  const [rewards, setRewards] = useState<IAirdropRewards>(getAirdropRewards(state.account.address.toLowerCase()))
+
+   // if (received) {
+  //   return (
+  //     <div className='container container-center'>
+  //       <AlreadyClaimed />
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className='container container-center'>
@@ -116,7 +115,7 @@ export default function Home({ library, state, dispatch }) {
         <NoAirdrop />
       )}
       {rewards.total.comparedTo(new BigNumber(0)) > 0 && (
-        <ClaimRewards rewards={rewards} />
+        <ClaimRewards rewards={rewards} library={library}/>
       )}
     </div>
   )

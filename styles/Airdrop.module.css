@@ -18,11 +18,10 @@
   padding-bottom: 70px;
 }
 
-
 .homeContainer {
   background: white;
   border-radius: 11px;
-  padding: 51px 77px;
+  padding: 30px 77px 81px;
   max-width: 709px;
   width: 100%;
   color: black;
@@ -32,14 +31,101 @@
   margin-bottom: 114px;
 }
 
+/* Sommelier icon on top ox box start ----------------------------------------------------------*/
+.homeIcon {
+  background: white;
+  margin:  -110px auto 20px;
+  width: 202px;
+  height: 202px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.homeIcon img {
+  height: 150px;
+}
+/* Sommelier icon on top ox box end ----------------------------------------------------------*/
+ 
+/* Airdrop box start ----------------------------------------------------------*/
 .homeContainer > h2 {
   padding-top: 33px;
 }
 
 .homeContainer > p {
   padding-top: 33px;
+  font-size: 20px;
+  line-height: 27px;
 }
 
+.homeContainer > .congrats {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.homeContainer > .congrats > div {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  line-height: 27px;
+  color: #E323FF;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.homeContainer > .congrats div img {
+  width: 33px;
+  height: 37px;
+  padding: 5px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.06));
+  background: white;
+  border-radius: 50%;
+  margin-left: 6px;
+}
+
+.homeContainer > ul {
+  padding-left: 24px;
+  font-weight: bold;
+}
+
+.homeContainer > ul li {
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.homeContainer > img {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.transactionResult {
+  display: flex;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.transactionResult img {
+  width: 121px;
+  margin-right: 40px;
+}
+
+.transactionResult .text h3 {
+  font-size: 25px;
+  line-height: 34px;
+}
+
+.transactionResult .text p {
+  font-size: 20px;
+  line-height: 27px;
+}
+
+/* Airdrop box end ----------------------------------------------------------*/
+
+/* rewards panel start ----------------------------------------------------------*/
 .rewardsPanel {
   width: 100%;
   margin-top: 50px;
@@ -122,22 +208,88 @@
 .receiveValueImg img {
   height: 40px;
 }
+/* rewards panel end ----------------------------------------------------------*/
 
-.claimButton {
-  width: 470px;
-  height: 67px;
+/* button groups start ----------------------------------------------------------*/
+.buttonGroup {
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(269.95deg, #E323FF 0.02%, #7517F8 97.45%);
-  border-radius: 11px;
-  margin: 50px auto;
-  color: white;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.buttonGroup button {
   font-size: 30px;
   line-height: 40px;
   font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  height: 60px;
 }
 
-.claimButton img {
-  margin-left: 30px;
+.buttonGroup .nextButton {
+  width: 158px;
+  background: linear-gradient(269.95deg, #E323FF 0.02%, #7517F8 97.45%);
 }
+
+.buttonGroup .nextButton img {
+  margin-left: 20px;
+}
+
+.buttonGroup .backButton {
+  width: 158px;
+  background: #eaeaea;
+  border: 1px solid #d3d3d3;
+  color: #696767;
+}
+
+.buttonGroup .backButton img {
+  margin-right: 20px;
+}
+
+.buttonGroup .claimButton {
+  width: 470px;
+  background: linear-gradient(269.95deg, #E323FF 0.02%, #7517F8 97.45%);
+  margin: 0px auto;
+}
+
+.buttonGroup .claimButton img {
+  margin-left: 20px;
+}
+
+.share {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(77, 161, 255, 0.9) 0%, rgba(24, 133, 255, 0.9) 100%);
+  border-radius: 10.5232px;
+  padding: 23px 41px;
+  margin-top: 20px;
+}
+
+.share span {
+  color: white;
+  font-size: 30px;
+  line-height: 41px;
+  font-weight: 700;
+}
+
+.return {
+  width: 100%;
+  background: #EAEAEA;
+  border: 1px solid #D3D3D3;
+  border-radius: 11px;
+  padding: 25px 30px;
+  font-size: 30px;
+  line-height: 39px;
+  font-weight: 900;
+  text-align: center;
+  color: #696767;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+/* button groups end ----------------------------------------------------------*/
