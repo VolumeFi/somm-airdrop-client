@@ -12,11 +12,14 @@ import styles from 'styles/Airdrop.module.css'
 import BigNumber from 'bignumber.js';
 
 const NoAirdrop = () => {
+  const handleRedirect = () => {
+    window.location.reload()
+  }
+
   return (
     <div className={`${styles.noRewardContainer}`}>
-      <AlertPanel type="error" text="This wallet address was not found in the airdrop listing" />
-      <h2>Wallet Address Not Found.</h2>
-      <p>Please try with another wallet!</p>
+      <AlertPanel type="error" text="This wallet address was not found in the airdrop listing. Please try with another wallet" />
+      <Button className={styles.return} onClick={(e) => handleRedirect()}>Return to home page</Button>
     </div>
   )
 }
