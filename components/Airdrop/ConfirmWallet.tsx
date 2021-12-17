@@ -102,36 +102,6 @@ const ConfirmWallet = ({
   const [received, setReceived] = useState<boolean>(false)
   const [transactionStatus, setTransactionStatus] = useState<boolean>(false)
 
-  useEffect(() => {
-    const receivedClaim = async () => {
-      setLoading(true)
-      if (library?.wallet?.address) {
-        const receivedStatus = await library.methods.Airdrop.received(library.wallet.address)
-
-        console.log('received Status = ', receivedStatus, library.wallet.address)
-
-        if (receivedStatus === false) {
-          console.log('onloading claim')
-          await handleClaim()
-        } {
-          setLoading(false)
-        }
-      }
-     
-    }
-
-    receivedClaim()
-    
-  }, [library?.wallet?.address])
-
-
-  const handleRetry = async () => {
-    if (!received) {
-      setLoading(true)
-      await handleClaim()
-    }
-  };
- 
   const handleClaim = async () => {
     const proof = getMerkleProof(library.wallet.address)
 
@@ -156,11 +126,41 @@ const ConfirmWallet = ({
       setReceived(receivedStatus)
 
     } catch (e) {
+      console.log('transaction error')
+      console.log(e)
       setLoading(false)
     }
 
     setLoading(false)
   }
+
+  const handleRetry = async () => {
+    if (!received) {
+      setLoading(true)
+      await handleClaim()
+    }
+  };
+
+  useEffect(() => {
+    const receivedClaim = async () => {
+      setLoading(true)
+      if (library?.wallet?.address) {
+        const receivedStatus = await library.methods.Airdrop.received(library.wallet.address)
+
+        console.log('received Status = ', receivedStatus, library.wallet.address)
+
+        if (receivedStatus === false) {
+          console.log('onloading claim')
+          await handleClaim()
+        } {
+          setLoading(false)
+        }
+      }
+    }
+
+    receivedClaim()
+    
+  }, [library?.wallet?.address])
 
   return (
     <>
