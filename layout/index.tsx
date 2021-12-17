@@ -147,7 +147,7 @@ export default function Layout({
       <main className={`${styles.main} flex-column justify-between`}>
         <header className={styles.header}>
           {state.account.address && (
-            <img src="/logo.png" className={styles.headerLogo} />
+            <a href='/'><img src="/logo.png" className={styles.headerLogo} /></a>
           )}
           <div className={styles.headerConnect}>
             <Account
