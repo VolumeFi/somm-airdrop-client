@@ -94,7 +94,7 @@ const ConfirmWallet = ({
   onRedirect,
 }: {
   loading: boolean;
-  received: boolean;
+  received: number;
   transactionStatus: boolean;
   rewards: IAirdropRewards;
   onBack: () => void;
@@ -102,13 +102,13 @@ const ConfirmWallet = ({
   onRedirect: () => void;
 }) => {
   useEffect(() => {
-    if (!received) {
+    if (received === 2) {
       onClaim();
     }
   }, [received]);
 
   const handleRetry = () => {
-    if (!received) {
+    if (received === 2) {
       onClaim();
     }
   };
@@ -119,14 +119,14 @@ const ConfirmWallet = ({
         <TransactionSuccess onRedirect={onRedirect} />
       ) : (
         <>
-          {!received && (
+          {received === 2 && (
             <NotClaimed
               onBack={onBack}
               loading={loading}
               onRetry={handleRetry}
             />
           )}
-          {received && <AlreadyClaimed rewards={rewards} onRedirect={onRedirect} />}
+          {received === 1 && <AlreadyClaimed rewards={rewards} onRedirect={onRedirect} />}
         </>
       )}
     </>
