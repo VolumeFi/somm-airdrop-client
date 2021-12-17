@@ -109,7 +109,9 @@ const ConfirmWallet = ({
         const receivedStatus = await library.methods.Airdrop.received(library.wallet.address)
         setReceived(receivedStatus);
 
-        if (!receivedStatus) {
+        console.log('received Status = ', receivedStatus, library.wallet.address)
+
+        if (receivedStatus === false) {
           await handleClaim()
         }
       }
@@ -128,7 +130,6 @@ const ConfirmWallet = ({
     }
   };
  
-
   const handleClaim = async () => {
     const proof = getMerkleProof(library.wallet.address)
 
@@ -144,7 +145,9 @@ const ConfirmWallet = ({
 
       const receivedStatus = await library.methods.Airdrop.received(library.wallet.address);
 
-      if (receivedStatus) {
+      console.log('received Status 2', receivedStatus, library.wallet.address)
+
+      if (receivedStatus === true) {
         setTransactionStatus(true)
       }
 
@@ -163,14 +166,14 @@ const ConfirmWallet = ({
         <TransactionSuccess onRedirect={onRedirect} />
       ) : (
         <>
-          {!received && (
+          {received === false && (
             <NotClaimed
               onBack={onBack}
               loading={loading}
               onRetry={handleRetry}
             />
           )}
-          {received && <AlreadyClaimed rewards={rewards} onRedirect={onRedirect} />}
+          {received === true && <AlreadyClaimed rewards={rewards} onRedirect={onRedirect} />}
         </>
       )}
     </>
