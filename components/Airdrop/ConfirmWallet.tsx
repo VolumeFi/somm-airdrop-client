@@ -107,15 +107,17 @@ const ConfirmWallet = ({
       setLoading(true)
       if (library?.wallet?.address) {
         const receivedStatus = await library.methods.Airdrop.received(library.wallet.address)
-        setReceived(receivedStatus);
 
         console.log('received Status = ', receivedStatus, library.wallet.address)
 
         if (receivedStatus === false) {
+          console.log('onloading claim')
           await handleClaim()
+        } {
+          setLoading(false)
         }
       }
-      setLoading(false)
+     
     }
 
     receivedClaim()
@@ -123,10 +125,10 @@ const ConfirmWallet = ({
   }, [library?.wallet?.address])
 
 
-  const handleRetry = () => {
+  const handleRetry = async () => {
     if (!received) {
       setLoading(true)
-      handleClaim()
+      await handleClaim()
     }
   };
  
