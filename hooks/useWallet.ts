@@ -6,7 +6,7 @@ import { addresses } from 'utils/constants'
 
 let web3Modal
 
-type TWallet = [boolean, Function, any]
+type TWallet = [boolean, Function, any, Function]
 
 const events = []
 
@@ -83,6 +83,10 @@ export default function useWallet(dispatch) {
     })
   }
 
-  const ret: TWallet = [loading, connectWallet, library]
+  function disconnectWallet() {
+     dispatch({ type: "disconnect" });
+  }
+
+  const ret: TWallet = [loading, connectWallet, library, disconnectWallet]
   return ret
 }

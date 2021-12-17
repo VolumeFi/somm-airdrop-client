@@ -9,6 +9,9 @@ import { toNumber } from 'utils/common'
 import { addresses, ZERO } from 'utils/constants'
 import { reducer, initState } from './store'
 
+import Button from '../components/Button/Button'
+import NetworkModal from '../components/NetworkModal'
+
 import styles from './Layout.module.css'
 
 const FETCH_TIME = 15
@@ -70,8 +73,9 @@ export default function Layout({
   networks,
 }) {
   const [state, dispatch] = useReducer(reducer, initState)
-  const [loading, connectWallet, library] = useWallet(dispatch)
+  const [loading, connectWallet, library, disconnectWallet] = useWallet(dispatch)
   const [restored, setRestored] = useState(false)
+  const [connectModalShow, setConnectModalShow] = useState(false)
 
   const getBalance = () => {
     accountBalance(library, dispatch)
@@ -113,6 +117,10 @@ export default function Layout({
     }
   }, [library, state.transactions, state.account.address])
 
+  const handleConnectNetwork = () => {
+    setConnectModalShow(true)
+  }
+
   return (
     <>
       <Head>
@@ -147,7 +155,7 @@ export default function Layout({
               {...state}
               loading={loading}
               dispatch={dispatch}
-              connectWallet={connectWallet}
+              connectWallet={() => setConnectModalShow(true)}
             />
           </div>
         </header>
@@ -160,19 +168,26 @@ export default function Layout({
               </div>
               <span>Introducing SOMM</span>
               <h1>Sommelier Airdrop</h1>
-              <Account
-                caption={<div className={styles.noAccountConnect}>Connect to Wallet<img src="/assets/right-arrow.png" /></div>}
+              {/* <Account
+                caption={<div className={styles.noAccountConnect}></div>}
                 library={library}
                 {...state}
                 loading={loading}
                 dispatch={dispatch}
                 connectWallet={connectWallet}
-              />
+              /> */}
+              <Button
+                className={styles.noAccountConnect}
+                onClick={(e) => handleConnectNetwork()}
+              >
+                Connect to Wallet<img src="/assets/right-arrow.png" />
+              </Button>
             </div>
           </div>
         )}
         {state.account.address && (
           <>
+       
             {(networks.includes(state.account.network) && library) ?
               React.cloneElement(children, {
                 state,
@@ -197,6 +212,17 @@ export default function Layout({
           </>
         )}
       </main>
+      {connectModalShow && (
+        <NetworkModal 
+          onClose={() => setConnectModalShow(false)}
+          onSelectNetwork={(network: string) => {
+            if (network === 'ethereum') {
+              connectWallet(true)
+            }
+            setConnectModalShow(false)}
+          }
+        />
+      )}
     </>
   )
 }
