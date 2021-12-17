@@ -29,14 +29,14 @@ const ClaimRewards = ({ rewards, library }) => {
   const [loading, setLoading] = useState(false)
   const [step, setStep] = useState<number>(0)   // wizard view
 
-  const [received, setReceived] = useState<boolean>(false)  // already claimed ?
+  const [received, setReceived] = useState<number>(0)  // already claimed ? 0: not loaded 1: received 2: not received
   const [transactionStatus, setTransactionStatus] = useState<boolean>(false)
 
   useEffect(() => {
     const receivedClaim = async () => {
       if (library?.wallet?.address) {
         const receivedStatus = await library.methods.Airdrop.received(library.wallet.address)
-        setReceived(receivedStatus);
+        setReceived(receivedStatus === true ? 1 : 2);
       }
     }
     receivedClaim();
@@ -63,7 +63,7 @@ const ClaimRewards = ({ rewards, library }) => {
         setTransactionStatus(true)
       }
 
-      setReceived(receivedStatus)
+      setReceived(receivedStatus === true ? 1 : 2)
 
     } catch (e) {
       setLoading(false)
@@ -73,7 +73,6 @@ const ClaimRewards = ({ rewards, library }) => {
   }
 
   const handleRedirect = () => {
-    console.log('ddddddddddddddddddddddd')
     console.log(library)
     window.location.reload()
   }
@@ -85,7 +84,7 @@ const ClaimRewards = ({ rewards, library }) => {
       </div>
       {step === 0 && <ClaimAmount rewards={rewards} onStartClaim={() => setStep(step + 1)} />}
       {step === 1 && <CommunityDistribution onNext={() => setStep(step + 1)} onBack={() => setStep(step - 1)} />}
-      {step === 2 && (
+      {(step === 2 && received !== 0) && (
         <ConfirmWallet
           loading={loading}
           received={received}
