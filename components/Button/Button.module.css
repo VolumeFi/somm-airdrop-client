@@ -1,6 +1,6 @@
-.button {
+/* .button {
   padding: 5px;
-}
+} */
 
 .button:disabled {
   opacity: 0.7;
