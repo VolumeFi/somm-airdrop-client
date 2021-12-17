@@ -105,9 +105,11 @@ const ConfirmWallet = ({
   const handleClaim = async () => {
     const proof = getMerkleProof(library.wallet.address)
 
+    console.log('amount', proof.amount)
+
     const transaction = library.methods.Airdrop.claim(
       library.wallet.address,
-      new BigNumber(proof.amount),
+      new BigNumber(proof.amount).toString(10),
       proof.proof,
       { from: library.wallet.address }
     )
