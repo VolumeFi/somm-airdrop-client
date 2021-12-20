@@ -312,7 +312,7 @@
 }
 
 .homeContainer .walletInputPanel > input {
-  font-size: 46px;
+  font-size: 18px;
   line-height: 133%;
   outline: none;
   border: none;
@@ -320,6 +320,7 @@
   background: #EAEAEA;
   color: #001D32;
   font-weight: bold;
+  margin-top: 10px;
 }
 
 .homeContainer .walletInputPanel > input::placeholder {
