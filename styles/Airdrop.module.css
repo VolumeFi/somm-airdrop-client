@@ -278,6 +278,28 @@
   font-weight: 700;
 }
 
+.osmosisLink {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(269.95deg, rgba(229, 0, 202, 0.7) 0.02%, rgba(42, 2, 227, 0.7) 97.45%);
+  border-radius: 10.5232px;
+  padding: 23px 41px;
+  margin-top: 20px;
+}
+
+.osmosisLink span {
+  color: white;
+  font-size: 30px;
+  line-height: 41px;
+  font-weight: 700;
+}
+
+.osmosisLink img {
+  height: 54px;
+}
+
 .return {
   width: 100%;
   background: #EAEAEA;
