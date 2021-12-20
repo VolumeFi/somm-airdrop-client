@@ -25,11 +25,6 @@ const NoAirdrop = () => {
 
 const ClaimRewards = ({ rewards, library }) => {
 
-  // if (typeof window !== "undefined") {
-  //   // browser code
-  //   document.body.style.zoom = "50%";
-  // }
-
   const [step, setStep] = useState<number>(0)   // wizard view
 
   const handleRedirect = () => {
