@@ -48,7 +48,7 @@ const OsmosisReward = ({ onBack, address}) => {
           <p>Your Osmosis wallet was eligible for the airdrop. The number of tokens written below was sent to your wallet address.</p>
 
           <div className={styles.receivePanel}>
-            <p>You will receive</p>
+            <p>You have received</p>
             <div className={styles.receiveValue}>
               <span className={styles.receiveValueText}>{`${getOnlyDigitalValue(rewards.toNumber())}${getOnlyPointsValue(rewards.toNumber()) > 0 ? '.' : ''}`}</span>
               <span className={styles.receiveValuePoints}>{getOnlyPointsValue(rewards.toNumber()).toFixed(7).substring(2)}</span>
