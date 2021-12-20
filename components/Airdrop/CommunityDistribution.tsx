@@ -23,8 +23,8 @@ const CommunityDistribution = ({
 
       <ul>
         <li>Sommelier Pairings app wallets that interact with the Pairings vyper contracts</li>
-        <li>Sommelier Pairings app wallets that interact with the Pairings vyper contracts</li>
-        <li>Sommelier Pairings app wallets that interact with the Pairings vyper contracts</li>
+        <li>Uniswap V3 LPs wallets (on specific pools)</li>
+        <li>Osmosis LPs wallets (on specific pools)</li>
       </ul>
 
       <p>At a high level, all three types of wallet addresses receive a reward based on the amount of liquidity and duration (how long they provided that liquidity). Sommelier Pairings app wallets, additionally receive a <strong>flat participation reward</strong>. The distribution is meant to reward and encourage early Sommelier wallets as well as to encourage LPs on Uniswap V3 and Osmosis to bring their liquidity to Sommelier for the upcoming launch of Cellars on Uniswap v3 and Osmosis. </p>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BigNumber from 'bignumber.js';
 
 import { IAirdropRewards } from '../../utils/airdrop';
-import { getOnlyDigitalValue, getOnlyPointsValue } from '../../utils/number';
+import { numberWithCommas, getOnlyDigitalValue, getOnlyPointsValue } from '../../utils/number';
 import { getMerkleProof } from '../../utils/merkletree'
 import Button from '../Button/Button';
 
@@ -46,9 +46,9 @@ const AlreadyClaimed = ({ rewards, onRedirect }) => (
     <div className={styles.receivePanel}>
       <p>You have received</p>
       <div className={styles.receiveValue}>
-        <span className={styles.receiveValueText}>{`${getOnlyDigitalValue(
+        <span className={styles.receiveValueText}>{`${numberWithCommas(getOnlyDigitalValue(
           rewards.total.toNumber()
-        )}${
+        ))}${
           getOnlyPointsValue(rewards.total.toNumber()) > 0 ? "." : ""
         }`}</span>
         <span className={styles.receiveValuePoints}>
@@ -60,16 +60,20 @@ const AlreadyClaimed = ({ rewards, onRedirect }) => (
       </div>
     </div>
 
-    <Button className={styles.share}>
+    <a
+      className={styles.share}
+      target="_blank"
+      href={`https://twitter.com/intent/tweet?text=I%20just%20claimed%20${rewards.total.toFormat(2)}%20$SOMM%20from%20@sommfinance.%20Cheers!`}
+    >
       <span>Share the Good News</span>
-      <img src="/assets/twitter.png" />
-    </Button>
+      <img src="assets/twitter.png" />
+    </a>
 
     <Button className={styles.return} onClick={(e) => onRedirect()}>Return to home page</Button>
   </>
 );
 
-const TransactionSuccess = ({ onRedirect }) => (
+const TransactionSuccess = ({ rewards, onRedirect }) => (
   <>
     <h2>Claim successful!</h2>
     <div className={styles.congrats}>
@@ -78,10 +82,14 @@ const TransactionSuccess = ({ onRedirect }) => (
       Share the news with your friends!
     </div>
 
-    <Button className={styles.share}>
+    <a
+      className={styles.share}
+      target="_blank"
+      href={`https://twitter.com/intent/tweet?text=I%20just%20claimed%20${rewards.total.toFormat(2)}%20$SOMM%20from%20@sommfinance.%20Cheers!`}
+    >
       <span>Share the Good News</span>
       <img src="assets/twitter.png" />
-    </Button>
+    </a>
 
     <Button className={styles.return} onClick={(e) => onRedirect()}>Return to home page</Button>
   </>
@@ -148,6 +156,7 @@ const ConfirmWallet = ({
       setLoading(true)
       if (library?.wallet?.address) {
         const receivedStatus = await library.methods.Airdrop.received(library.wallet.address)
+        setReceived(receivedStatus)
 
         console.log('received Status = ', receivedStatus, library.wallet.address)
 
@@ -167,7 +176,7 @@ const ConfirmWallet = ({
   return (
     <>
       {transactionStatus ? (
-        <TransactionSuccess onRedirect={onRedirect} />
+        <TransactionSuccess rewards={rewards} onRedirect={onRedirect} />
       ) : (
         <>
           {received === false && (

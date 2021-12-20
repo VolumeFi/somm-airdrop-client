@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Button from 'components/Button/Button'
 import AlertPanel from '../components/AlertPanel/AlertPanel';
 
-import { getOnlyDigitalValue, getOnlyPointsValue } from '../utils/number'
+import { numberWithCommas, getOnlyDigitalValue, getOnlyPointsValue } from '../utils/number'
 import { getOsmosisRewards } from '../utils/airdrop'
 
 import styles from 'styles/Airdrop.module.css'
@@ -17,14 +17,14 @@ const RewardInput = ({ onStartClaim, onChangeAddress, address }) => (
         </p>
     <div className={styles.walletInputPanel}>
       <span>Enter a wallet address</span>
-      <input type="text" value={address} onChange={(e) => onChangeAddress(e.target.value)} />
+      <input autoFocus type="text" value={address} onChange={(e) => onChangeAddress(e.target.value)} />
     </div>
     <div className={styles.buttonGroup}>
       <Button
         className={styles.claimButton}
         onClick={(e) => onStartClaim()}
       >
-        <span>Start your claim process</span>
+        <span>Check your rewards</span>
         <img src='/assets/right-arrow.png' />
       </Button>
     </div>
@@ -50,7 +50,7 @@ const OsmosisReward = ({ onBack, address}) => {
           <div className={styles.receivePanel}>
             <p>You have received</p>
             <div className={styles.receiveValue}>
-              <span className={styles.receiveValueText}>{`${getOnlyDigitalValue(rewards.toNumber())}${getOnlyPointsValue(rewards.toNumber()) > 0 ? '.' : ''}`}</span>
+              <span className={styles.receiveValueText}>{`${numberWithCommas(getOnlyDigitalValue(rewards.toNumber()))}${getOnlyPointsValue(rewards.toNumber()) > 0 ? '.' : ''}`}</span>
               <span className={styles.receiveValuePoints}>{getOnlyPointsValue(rewards.toNumber()).toFixed(7).substring(2)}</span>
               <div className={styles.receiveValueImg}>
                 <img src="/assets/sommelier.png" />
@@ -58,10 +58,19 @@ const OsmosisReward = ({ onBack, address}) => {
             </div>
           </div>
 
-          <Button className={styles.share}>
+          <a
+            className={styles.share}
+            target="_blank"
+            href={`https://twitter.com/intent/tweet?text=I%20just%20claimed%20${rewards.toFormat(2)}%20$SOMM%20from%20@sommfinance.%20Cheers!`}
+          >
             <span>Share the Good News</span>
             <img src="/assets/twitter.png" />
-          </Button>
+          </a>
+
+          <a href="https://app.osmosis.zone" target="_blank" className={styles.osmosisLink}>
+              <span>Go to Osmosis</span>
+              <img src="/assets/osmosis.png" />
+          </a>
 
           <Button className={styles.return} onClick={(e) => onBack()}>Return to home page</Button>
         </>

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { IAirdropRewards } from '../../utils/airdrop'
-import { getOnlyDigitalValue, getOnlyPointsValue } from '../../utils/number'
+import { numberWithCommas, getOnlyDigitalValue, getOnlyPointsValue } from '../../utils/number'
 
 import Button from '../Button/Button'
 import AlertPanel from '../AlertPanel/AlertPanel'
@@ -23,9 +23,9 @@ const ClaimAmount = ({
       <p>There are three types of wallet adresses that qualify for sommelier community rewards, below you will see what type of reward you are eligible for and the amount of tokens you will receive.</p>
 
       <div className={styles.rewardsPanel}>
-        <RewardsItem text="Sommelier Pairings Participation" value={rewards.sommPairingParticipation.toFixed(0).toString()} />
-        <RewardsItem text="Sommelier Pairings Position-weighted" value={rewards.sommPairingPositionWeighted.toFixed(4).toString()} />
-        <RewardsItem text="Uniswap V3 LPs" value={rewards.uniswapV3LP.toFixed(4).toString()} />
+        <RewardsItem text="Sommelier Pairings Participation" value={rewards.sommPairingParticipation.toFormat()} />
+        <RewardsItem text="Sommelier Pairings Position-weighted" value={rewards.sommPairingPositionWeighted.toFormat(4)} />
+        <RewardsItem text="Uniswap V3 LPs" value={rewards.uniswapV3LP.toFormat(4)} />
       </div>
 
       <h2>Claim your tokens</h2>
@@ -34,7 +34,7 @@ const ClaimAmount = ({
       <div className={styles.receivePanel}>
         <p>You will receive</p>
         <div className={styles.receiveValue}>
-          <span className={styles.receiveValueText}>{`${getOnlyDigitalValue(rewards.total.toNumber())}${getOnlyPointsValue(rewards.total.toNumber()) > 0 ? '.' : ''}`}</span>
+          <span className={styles.receiveValueText}>{`${numberWithCommas(getOnlyDigitalValue(rewards.total.toNumber()))}${getOnlyPointsValue(rewards.total.toNumber()) > 0 ? '.' : ''}`}</span>
           <span className={styles.receiveValuePoints}>{getOnlyPointsValue(rewards.total.toNumber()).toFixed(7).substring(2)}</span>
           <div className={styles.receiveValueImg}>
             <img src="/assets/sommelier.png" />
