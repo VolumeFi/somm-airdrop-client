@@ -72,15 +72,15 @@
   align-items: center;
 }
 
-.noAccountLandingLogo img {
+.noAccountLandingLogo > img {
   width: 84px;
 }
 
-.noAccountLanding span {
+.noAccountLanding > span {
   padding-top: 40px;
 }
 
-.noAccountLanding h1 {
+.noAccountLanding > h1 {
   padding-top: 10px;
   padding-bottom: 30px;
 }
@@ -99,7 +99,7 @@
   padding: 25px 30px;
 }
 
-.noAccountConnect img {
+.noAccountConnect > img {
   height: 25px;
   margin-left: 30px;
 }

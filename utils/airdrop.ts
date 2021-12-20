@@ -1,7 +1,8 @@
-import BigNumber from "bignumber.js";
+import BigNumber from "bignumber.js"
 
-import SommRewards from "../token_rewards/somm_app_rewards.json";
-import UniswapRewards from "../token_rewards/uniswap_v3_pool_rewards.json";
+import SommRewards from "../token_rewards/somm_app_rewards.json"
+import UniswapRewards from "../token_rewards/uniswap_v3_pool_rewards.json"
+import OsmosisRewards from '../token_rewards/osmosis_pool_rewards.json'
 
 export interface IAirdropRewards {
   sommPairingParticipation: BigNumber;
@@ -44,6 +45,14 @@ export const getAirdropRewards = (address: string): IAirdropRewards => {
 
   return rewards;
 };
+
+export const getOsmosisRewards = (address: string): BigNumber => {
+  if (address in OsmosisRewards) {
+    return new BigNumber(OsmosisRewards[address])
+  }
+
+  return new BigNumber(0)
+}
 
 export const sortRewardsData = () => {
   const allRewards = {};

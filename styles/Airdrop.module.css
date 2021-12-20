@@ -293,3 +293,41 @@
   margin-bottom: 30px;
 }
 /* button groups end ----------------------------------------------------------*/
+
+/** Osmosis Page ** --------------------------------------------------------- **/
+.homeContainer .walletInputPanel {
+  background: #EAEAEA;
+  border: 1.3154px solid #D3D3D3;
+  border-radius: 10.5232px;
+  padding: 30px;
+  width: 100%;
+  margin-top: 32px;
+}
+
+.homeContainer .walletInputPanel span {
+  font-size: 25px;
+  line-height: 32px;
+  letter-spacing: 0.02em;
+  color: #001D32;
+}
+
+.homeContainer .walletInputPanel > input {
+  font-size: 46px;
+  line-height: 133%;
+  outline: none;
+  border: none;
+  width: 100%;
+  background: #EAEAEA;
+  color: #001D32;
+  font-weight: bold;
+}
+
+.homeContainer .walletInputPanel > input::placeholder {
+  color: #eaeaea;
+}
+
+.homeContainer .osmosisLogo {
+  width: 323px;
+  height: 87px;
+  margin-bottom: 15px;
+}

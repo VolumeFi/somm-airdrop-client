@@ -2,7 +2,6 @@ import React, { useReducer, useState } from 'react'
 import BigNumber from 'bignumber.js'
 import Head from 'next/head'
 import { useEffect } from 'react'
-import { useRouter } from 'next/router'
 import useWallet from 'hooks/useWallet'
 import Account from 'components/Account/Account'
 import { toNumber } from 'utils/common'
@@ -146,69 +145,69 @@ export default function Layout({
 
       <main className={`${styles.main} flex-column justify-between`}>
         <header className={styles.header}>
-          {state.account.address && (
+          {(state.account.address || route.includes('/osmosis')) && (
             <a href='/'><img src="/logo.png" className={styles.headerLogo} /></a>
           )}
           <div className={styles.headerConnect}>
-            <Account
-              library={library}
-              {...state}
-              loading={loading}
-              dispatch={dispatch}
-              connectWallet={() => setConnectModalShow(true)}
-            />
-          </div>
-        </header>
-        {!state.account.address && (
-          <div className={styles.noAccountContainer}>
-            <img src="/assets/landing-logo-1.png" className={styles.noAcountBg} />
-            <div className={styles.noAccountLanding}>
-              <div className={styles.noAccountLandingLogo}>
-                <img src="/assets/sommelier.png" />
-              </div>
-              <span>Introducing SOMM</span>
-              <h1>Sommelier Airdrop</h1>
-              {/* <Account
-                caption={<div className={styles.noAccountConnect}></div>}
+            {!route.includes('/osmosis') && (
+              <Account
                 library={library}
                 {...state}
                 loading={loading}
                 dispatch={dispatch}
-                connectWallet={connectWallet}
-              /> */}
-              <Button
-                className={styles.noAccountConnect}
-                onClick={(e) => handleConnectNetwork()}
-              >
-                Connect to Wallet<img src="/assets/right-arrow.png" />
-              </Button>
-            </div>
+                connectWallet={() => setConnectModalShow(true)}
+              />
+            )}
           </div>
-        )}
-        {state.account.address && (
+        </header>
+        {route.includes('/osmosis') ? (
+          children
+        ) : (
           <>
-       
-            {(networks.includes(state.account.network) && library) ?
-              React.cloneElement(children, {
-                state,
-                dispatch,
-                library,
-                networks,
-              }) : (
-                <div className={styles.noAccountContainer}>
-                  <img src="/assets/landing-logo-1.png" className={styles.noAcountBg} />
-                  <div className={styles.noAccountLanding}>
-                    Please connect to following networks
-                <br />
-                    <ul>
-                      {networks.map((network, idx) => (
-                        <li key={idx}>{networkLabels[network]}</li>
-                      ))}
-                    </ul>
+            {!state.account.address && (
+              <div className={styles.noAccountContainer}>
+                <img src="/assets/landing-logo-1.png" className={styles.noAcountBg} />
+                <div className={styles.noAccountLanding}>
+                  <div className={styles.noAccountLandingLogo}>
+                    <img src="/assets/sommelier.png" />
                   </div>
+                  <span>Introducing SOMM</span>
+                  <h1>Sommelier Airdrop</h1>
+                  <Button
+                    className={styles.noAccountConnect}
+                    onClick={(e) => handleConnectNetwork()}
+                  >
+                    Connect to Wallet<img src="/assets/right-arrow.png" />
+                  </Button>
                 </div>
-              )
-            }
+              </div>
+            )}
+            {state.account.address && (
+              <>
+
+                {(networks.includes(state.account.network) && library) ?
+                  React.cloneElement(children, {
+                    state,
+                    dispatch,
+                    library,
+                    networks,
+                  }) : (
+                    <div className={styles.noAccountContainer}>
+                      <img src="/assets/landing-logo-1.png" className={styles.noAcountBg} />
+                      <div className={styles.noAccountLanding}>
+                        Please connect to following networks
+                        <br />
+                        <ul>
+                          {networks.map((network, idx) => (
+                            <li key={idx}>{networkLabels[network]}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  )
+                }
+              </>
+            )}
           </>
         )}
       </main>

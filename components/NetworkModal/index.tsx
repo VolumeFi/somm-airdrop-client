@@ -1,6 +1,7 @@
 import React from 'react'
-import { TMap } from 'types'
+import Link from 'next/link'
 
+import { TMap } from 'types'
 import Account from 'components/Account/Account'
 
 import styles from './NetworkModal.module.css'
@@ -23,11 +24,13 @@ const NetworkModal = ({
             <h3>Ethereum</h3>
           </div>
           <div className={styles.divider} />
-          <div className={styles.network}>
-            <a href="https://app.osmosis.zone/" target="_blank">
-              <img src='/assets/osmosis.png' />
-              <h3>Osmosis</h3>
-            </a>
+          <div className={styles.network} onClick={(e) => onSelectNetwork('osmosis')}>
+            <Link href="/osmosis">
+              <div>
+                <img src='/assets/osmosis.png' />
+                <h3>Osmosis</h3>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
