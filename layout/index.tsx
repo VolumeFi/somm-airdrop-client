@@ -146,7 +146,10 @@ export default function Layout({
       <main className={`${styles.main} flex-column justify-between`}>
         <header className={styles.header}>
           {(state.account.address || route.includes('/osmosis')) && (
-            <a href='/'><img src="/logo.png" className={styles.headerLogo} /></a>
+            <a href='/'>
+              <img src="/logo.png" className={styles.headerLogo} />
+              <img src="/assets/sommelier.png" className={styles.headerLogoMobile} />
+            </a>
           )}
           <div className={styles.headerConnect}>
             {!route.includes('/osmosis') && (

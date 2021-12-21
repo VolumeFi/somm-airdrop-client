@@ -31,6 +31,11 @@
   height: 99px;
 }
 
+.headerLogoMobile {
+  display: none;
+  height: 80px;
+}
+
 .headerConnect {
   flex: 1;
   display: flex;
@@ -83,13 +88,13 @@
 .noAccountLanding > h1 {
   padding-top: 10px;
   padding-bottom: 30px;
+  text-align: center;
 }
 
 .noAccountConnect {
   background: linear-gradient(269.95deg, #E323FF 0.02%, #AE1DFC 46.7%, #7517F8 97.45%);
   display: flex;
   align-items: center;
-  padding: 5px 15px;
   border-radius: 11px;
   color: white;
   font-weight: 900;
@@ -227,37 +232,28 @@
   margin: 16px 10px;
 }
 
-@media screen and (max-width: 1267px) {
-  .footer {
-    padding: 28px var(--padding-normal);
-  }
-  .linkWrapper {
-    margin: 38px 0px;
+@media screen and (max-width: 1024px) {
+  .noAcountBg {
+    display: none;
   }
 }
 
-@media all and (max-width: 992px) {
-  .menu div {
-    cursor: pointer;
-    margin-right: var(--padding-narrow);
-  }
-  .linkWrapper {
-    flex-direction: column;
-    align-items: flex-start !important;
-  }
-  .linkWrapper div:not(:last-child) {
-    margin-bottom: var(--padding-normal);
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 30px;
   }
 }
 
-@media all and (max-width: 767px) {
-  .menu {
-    display: none !important;
+@media screen and (max-width: 500px) {
+  .headerLogo {
+    display: none;
   }
-  .hamburger {
-    display: block;
+
+  .headerLogoMobile {
+    display: inline-block;
   }
-  .mobileMenu {
-    display: block;
+
+  .noAccountConnect {
+    font-size: 20px;
   }
 }
