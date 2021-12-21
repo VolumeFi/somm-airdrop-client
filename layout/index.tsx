@@ -156,6 +156,7 @@ export default function Layout({
                 loading={loading}
                 dispatch={dispatch}
                 connectWallet={() => setConnectModalShow(true)}
+                disconnectWallet={() => disconnectWallet()}
               />
             )}
           </div>
