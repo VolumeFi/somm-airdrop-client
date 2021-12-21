@@ -46,3 +46,37 @@
   color: var(--color-gray);
   font-weight: normal;
 }
+
+.tooltip {
+  padding: 16px 20px;
+  z-index: 9000;
+}
+
+.tooltip .address {
+  font-size: 20px;
+  line-height: 133%;
+  font-weight: bold;
+}
+
+.tooltip .address span:first-child{
+  color: #7818F9;
+  font-weight: bold;
+}
+
+.tooltip .disconnect {
+  text-align: center;
+  margin-top: 7px;
+}
+
+.tooltip .disconnect button {
+  background: linear-gradient(269.95deg, #E323FF 0.02%, #7517F8 97.45%);
+  width: 171.57px;
+  height: 45.14px;
+  border-radius: 11px;
+  color: white;
+  font-size: 20px;
+  line-height: 133%;
+  font-weight: bold;
+  margin-left: auto;
+  cursor: pointer;
+}

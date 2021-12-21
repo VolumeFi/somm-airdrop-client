@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 :root {
-  --font-family: 'DM Sans', sans-serif;
+  --font-family: 'Lato';
   --font-size-normal: 16px;
   --font-size-small: 12px;
   --font-size-2x: 24px;
@@ -121,8 +123,24 @@ body {
   font-family: var(--font-family);
   font-size: var(--font-size-normal);
   letter-spacing: 1px;
-  color: black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #00101C;
+  color: #fff;
 }
+
+.container {
+  width: 100vw;
+  max-width: 100%;
+  min-height: calc(100vh -  151px);
+  margin-top: 151px;
+}
+
+.container-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
 body {
   overflow: auto;

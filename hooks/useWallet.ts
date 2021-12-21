@@ -83,8 +83,10 @@ export default function useWallet(dispatch) {
     })
   }
 
-  function disconnectWallet() {
-     dispatch({ type: "disconnect" });
+  async function disconnectWallet() {
+    // dispatch({ type: "disconnect" })
+    await web3Modal.clearCachedProvider()
+    window.location.href = '/'
   }
 
   const ret: TWallet = [loading, connectWallet, library, disconnectWallet]

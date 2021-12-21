@@ -82,11 +82,15 @@ const OsmosisReward = ({ onBack, address}) => {
       )}
     </>
   )
-}
+} 
 
 export default function osmosis() {
   const [step, setStep] = useState<number>(0)
   const [address, setAddress] = useState<string>('')
+
+  const handleRedirect = () => {
+    window.location.href = "/"
+  }
 
   return (
     <div className='container container-center'>
@@ -99,7 +103,7 @@ export default function osmosis() {
             address={address}
           />
         )}
-        {step === 1 && <OsmosisReward address={address} onBack={(e) => setStep(step - 1)} /> }
+        {step === 1 && <OsmosisReward address={address} onBack={() => handleRedirect()} /> }
       </div>
     </div>
   )
