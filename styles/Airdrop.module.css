@@ -354,3 +354,66 @@
   height: 87px;
   margin-bottom: 15px;
 }
+
+@media screen and (max-width: 1024px) {
+  .homeContainer {
+    margin-top: 100px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .homeContainer {
+    padding: 30px 27px 81px;
+    max-width: 709px;
+    width: 90%;
+    margin-bottom: 114px;
+  }
+
+  .homeContainer .osmosisLogo {
+    width: 226px;
+    height: 61px;
+  }
+
+  .receiveValueImg {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  .rewardsItemValue img {
+    display: none;
+  }
+
+  .receivePanel {
+    padding: 11px 22px;
+    margin-top: 30px;
+  }
+
+  .receivePanel p {
+    color: var(--color-black2);
+    font-size: 25px;
+    letter-spacing: 0.02em;
+    line-height: 133.1%;
+  }
+
+  .receiveValue {
+    font-size: 26px;
+    line-height: 133%;
+    margin-top: 5px;
+  }
+
+  .return {
+    font-size: 20px;
+    line-height: 133%;
+  }
+
+  .share span {
+    font-size: 20px;
+    line-height: 133%;
+  }
+
+  .share img {
+    width: 30px;
+  }
+}

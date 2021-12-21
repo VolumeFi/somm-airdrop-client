@@ -73,3 +73,17 @@
   width: 3px;
   background: rgba(211, 211, 211, 0.4);
 }
+
+@media screen and (max-width: 500px) {
+  .modalPanel .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modalPanel .content .divider {
+    width: 80%;
+    height: 3px;
+    background: rgba(211, 211, 211, 0.4);
+    margin: 10px 0px;
+  }
+}
