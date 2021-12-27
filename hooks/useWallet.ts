@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Web3Modal from 'web3modal'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import SommAirdropLibrary from "lib/index";
-import { addresses } from 'utils/constants'
+import { addresses, DEFAULT_NETWORK } from 'utils/constants'
 
 let web3Modal
 
@@ -78,8 +78,15 @@ export default function useWallet(dispatch) {
   }
 
   function connectWallet(refresh = false) {
-    getProvider(refresh).then((provider) => {
-      if (provider) initLibrary(provider)
+    getProvider(refresh).then(async (provider) => {
+      if (provider){ 
+        await provider.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: `0x${DEFAULT_NETWORK.toString(16)}` }],
+        });
+
+        initLibrary(provider)
+      }
     })
   }
 
