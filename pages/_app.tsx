@@ -4,7 +4,9 @@ import 'styles/globals.css'
 
 // import 'vendor/home.scss'
 
-const allowedNetworks = [4]
+import { DEFAULT_NETWORK } from '../utils/constants'
+
+const allowedNetworks = [DEFAULT_NETWORK]
 
 function App({ Component, router }: AppProps) {
   return (
