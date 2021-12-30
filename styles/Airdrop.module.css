@@ -90,11 +90,13 @@
 .homeContainer > ul {
   padding-left: 24px;
   font-weight: bold;
+  margin-top: 20px;
 }
 
 .homeContainer > ul li {
   font-size: 20px;
   line-height: 27px;
+  margin-bottom: 15px;
 }
 
 .homeContainer > img {
@@ -237,6 +239,7 @@
 
 .buttonGroup .nextButton img {
   margin-left: 20px;
+  height: 21px;
 }
 
 .buttonGroup .backButton {
@@ -258,6 +261,7 @@
 
 .buttonGroup .claimButton img {
   margin-left: 20px;
+  height: 21px;
 }
 
 .share {

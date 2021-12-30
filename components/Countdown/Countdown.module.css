@@ -7,7 +7,7 @@
   background-repeat: no-repeat;
   background-position: center right;
   box-sizing: border-box;
-  padding: 25px 30px;
+  padding: 25px 100px;
   display: flex;
   justify-content: space-between;
 }
@@ -47,7 +47,6 @@
 
 .countdownRight {
   /* margin-left: 133px; */
-  margin-right: 180px;
   display: flex;
 }
 

@@ -9,9 +9,9 @@ const END_TIME = 1648684800000    // 2022.3.31 0:0:0 UTC
 
 const CountNumber = ({ value, cnt, mark }) => (
   <div className={styles.countNumber}>
-    {prevZero(value, '*', cnt).split('').map((num, index) => (
+    {prevZero(value, '0', cnt).split('').map((num, index) => (
       <div className={styles.item} key={`${mark}-${index}`}>
-        {num === '*' ? '' : num}
+        {num}
       </div>
     ))}
   </div>

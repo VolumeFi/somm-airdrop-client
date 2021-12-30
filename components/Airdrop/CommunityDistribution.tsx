@@ -27,7 +27,8 @@ const CommunityDistribution = ({
         <li>Osmosis LPs wallets (on specific pools)</li>
       </ul>
 
-      <p>At a high level, all three types of wallet addresses receive a reward based on the amount of liquidity and duration (how long they provided that liquidity). Sommelier Pairings app wallets, additionally receive a <strong>flat participation reward</strong>. The distribution is meant to reward and encourage early Sommelier wallets as well as to encourage LPs on Uniswap V3 and Osmosis to bring their liquidity to Sommelier for the upcoming launch of Cellars on Uniswap v3 and Osmosis. </p>
+      <p>At a high level, all three types of wallet addresses receive a reward based on the amount of liquidity and duration (how long they provided that liquidity).</p>
+      <p>Sommelier Pairings app wallets, additionally receive a <strong>flat participation reward</strong>. The distribution is meant to reward and encourage early Sommelier wallets as well as to encourage LPs on Uniswap V3 and Osmosis to bring their liquidity to Sommelier for the upcoming launch of Cellars on Uniswap v3 and Osmosis.</p>
 
       <img src='assets/token-chart.png' />
 
