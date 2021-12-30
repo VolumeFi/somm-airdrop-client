@@ -127,6 +127,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #00101C;
   color: #fff;
+
+  /* -moz-transform: scale(0.8, 0.8);
+  zoom: 0.8;
+  zoom: 80%; */
 }
 
 .container {

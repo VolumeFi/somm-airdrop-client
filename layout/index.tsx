@@ -10,6 +10,7 @@ import { reducer, initState } from './store'
 
 import Button from '../components/Button/Button'
 import NetworkModal from '../components/NetworkModal'
+import Countdown from '../components/Countdown'
 
 import styles from './Layout.module.css'
 
@@ -142,8 +143,9 @@ export default function Layout({
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      
       <main className={`${styles.main} flex-column justify-between`}>
+        <Countdown />
         <header className={styles.header}>
           {(state.account.address || route.includes('/osmosis')) && (
             <a href='/'>

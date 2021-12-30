@@ -1,0 +1,88 @@
+.countdownContainer {
+  height: 125px;
+  width: 100vw;
+  max-width: 100%;
+  background: #B2F9FE;
+  background-image: url('/assets/banner-bg.png');
+  background-repeat: no-repeat;
+  background-position: center right;
+  box-sizing: border-box;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.countdownLeft {
+  display: flex;
+  flex-direction: column;
+  max-width: 587px;
+}
+
+.countdownLeft .title {
+  font-size: 24px;
+  line-height: 25px;
+  background: #5855FF;
+  padding: 3px 8px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.countdownLeft .title:first-child {
+  border-top-left-radius: 3.55px;
+  border-top-right-radius: 3.55px;
+  border-bottom-right-radius: 3.55px;
+}
+
+.countdownLeft .title:nth-child(2) {
+  border-bottom-left-radius: 3.55px;
+  border-bottom-right-radius: 3.55px;
+}
+
+.countdownLeft .details {
+  color: #5855FF;
+  font-size: 13px;
+  font-weight: 500;
+  padding-top: 7px
+}
+
+.countdownRight {
+  /* margin-left: 133px; */
+  margin-right: 180px;
+  display: flex;
+}
+
+.countdownRight .countdownContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 18px;
+}
+
+.countdownRight .countdownContent .countNumber {
+  display: flex;
+}
+
+.countdownRight .countdownContent .countNumber .item {
+  width: 42px;
+  height: 55px;
+  background: #fff;
+  margin: 1px;
+  font-size: 30px;
+  color: #001D32;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  box-shadow: 0px 4px 4px rgba(139, 139, 139, 0.25);
+  border-radius: 3.55102px;
+}
+
+.countdownRight .countdownContent .countdownLabels {
+  background: #5855FF;
+  width: fit-content;
+  margin-top: 6px;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 4px;
+  text-transform: uppercase;
+}

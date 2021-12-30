@@ -14,10 +14,6 @@
 }
 
 .header {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
   transition: all 0.2s;
   background: var(--color-black1);
   box-shadow: var(--header-shadow);
@@ -55,10 +51,10 @@
 }
 
 .noAcountBg {
-  height: 80vh;
+  height: 60vh;
   position: fixed;
   left: 0;
-  top: 10vh;
+  top: 20vh;
 }
 
 .noAccountLanding {
