@@ -7,7 +7,7 @@
   background-repeat: no-repeat;
   background-position: center right;
   box-sizing: border-box;
-  padding: 25px 100px;
+  padding: 22px 100px;
   display: flex;
   justify-content: space-between;
 }
@@ -19,8 +19,8 @@
 }
 
 .countdownLeft .title {
-  font-size: 24px;
-  line-height: 25px;
+  font-size: 30px;
+  /* line-height: 25px; */
   background: #5855FF;
   padding: 3px 8px;
   font-weight: 600;
@@ -42,7 +42,7 @@
   color: #5855FF;
   font-size: 13px;
   font-weight: 500;
-  padding-top: 7px
+  padding-top: 3px
 }
 
 .countdownRight {
