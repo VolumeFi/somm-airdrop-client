@@ -110,9 +110,7 @@
 }
 :nth-child(16) {
   --nth-child: 15;
-}
-
-.hide {
+}6.hide {
   display: none;
 }
 
@@ -137,7 +135,7 @@ body {
   width: 100vw;
   max-width: 100%;
   min-height: calc(100vh -  151px);
-  margin-top: 151px;
+  margin-top: 71px;
 }
 
 .container-center {
