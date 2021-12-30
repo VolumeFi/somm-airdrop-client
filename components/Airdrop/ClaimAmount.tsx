@@ -24,8 +24,8 @@ const ClaimAmount = ({
 
       <div className={styles.rewardsPanel}>
         <RewardsItem text="Sommelier Pairings Participation" value={rewards.sommPairingParticipation.toFormat()} />
-        <RewardsItem text="Sommelier Pairings Position-weighted" value={rewards.sommPairingPositionWeighted.toFormat(4)} />
-        <RewardsItem text="Uniswap V3 LPs" value={rewards.uniswapV3LP.toFormat(4)} />
+        <RewardsItem text="Sommelier Pairings Position-weighted" value={rewards.sommPairingPositionWeighted.toFormat(0)} />
+        <RewardsItem text="Uniswap V3 LPs" value={rewards.uniswapV3LP.toFormat(0)} />
       </div>
 
       <h2>Claim your tokens</h2>
