@@ -1,5 +1,5 @@
 .countdownContainer {
-  height: 125px;
+  height: 145px;
   width: 100vw;
   max-width: 100%;
   background: #B2F9FE;
@@ -7,7 +7,7 @@
   background-repeat: no-repeat;
   background-position: center right;
   box-sizing: border-box;
-  padding: 22px 100px;
+  padding: 25px 100px;
   display: flex;
   justify-content: space-between;
 }
@@ -40,7 +40,7 @@
 
 .countdownLeft .details {
   color: #5855FF;
-  font-size: 13px;
+  font-size: 19px;
   font-weight: 500;
   padding-top: 3px
 }
