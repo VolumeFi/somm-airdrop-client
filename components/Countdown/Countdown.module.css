@@ -1,5 +1,5 @@
 .countdownContainer {
-  height: 125px;
+  height: 145px;
   width: 100vw;
   max-width: 100%;
   background: #B2F9FE;
@@ -19,8 +19,8 @@
 }
 
 .countdownLeft .title {
-  font-size: 24px;
-  line-height: 25px;
+  font-size: 30px;
+  /* line-height: 25px; */
   background: #5855FF;
   padding: 3px 8px;
   font-weight: 600;
@@ -40,9 +40,9 @@
 
 .countdownLeft .details {
   color: #5855FF;
-  font-size: 13px;
+  font-size: 19px;
   font-weight: 500;
-  padding-top: 7px
+  padding-top: 3px
 }
 
 .countdownRight {
