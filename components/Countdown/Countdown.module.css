@@ -85,3 +85,35 @@
   padding: 4px;
   text-transform: uppercase;
 }
+
+@media screen and (max-width: 768px) {
+  .countdownContainer {
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    background-image: none;
+    padding: 25px 25px;
+  }
+
+  .countdownLeft .details {
+    display: none;
+  }
+
+  .countdownLeft .title {
+    font-size: 23px;
+  }
+
+  .countdownRight {
+    margin-top: 10px;
+  }
+
+  .countdownRight .countdownContent {
+    margin-right: 8px;
+  }
+
+
+  .countdownRight .countdownContent .countNumber .item {
+    width: 39px;
+    font-size: 23px;
+  }
+}
