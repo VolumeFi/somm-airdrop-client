@@ -22,6 +22,8 @@ const Countdown = () => {
   const [hour, setHour] = useState(0)
   const [minute, setMinute] = useState(0)
 
+  const [show, setShow] = useState(true)
+
   useEffect(() => {
     let interval = null;
 
@@ -35,8 +37,9 @@ const Countdown = () => {
     return () => clearInterval(interval)
   }, [day, hour, minute])
 
-  return (
+  return show ? (
     <div className={styles.countdownContainer}>
+      <img src='/assets/close.png' className={styles.countdownClose} onClick={(e) => setShow(false)} />
       <div className={styles.countdownLeft}>
         <div className={styles.title}>Remaining time to claim</div>
         <div className={styles.title}>your tokens</div>
@@ -65,7 +68,7 @@ const Countdown = () => {
         </div>
       </div>
     </div>
-  )
+  ) : null
 }
 
 export default Countdown
