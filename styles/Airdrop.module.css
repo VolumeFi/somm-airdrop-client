@@ -52,6 +52,7 @@
 /* Airdrop box start ----------------------------------------------------------*/
 .homeContainer > h2 {
   padding-top: 33px;
+  font-size: 30px;
 }
 
 .homeContainer > p {
@@ -185,7 +186,9 @@
   line-height: 61px;
   font-weight: bold;
   display: flex;
+  align-items: center;
   margin-top: 5px;
+  width: 100%;
 }
 
 .receiveValueText {
@@ -361,7 +364,7 @@
 
 @media screen and (max-width: 1024px) {
   .homeContainer {
-    margin-top: 100px;
+    margin-top: 0px;
   }
 }
 
@@ -378,15 +381,20 @@
     height: 61px;
   }
 
-  .receiveValueImg {
-    display: none;
+  .receiveValueText {
+    font-size: 32px;
   }
+
+  .receiveValuePoints {
+    font-size: 32px;
+  }
+  
 }
 
 @media screen and (max-width: 500px) {
 
-  .rewardsItemValue img {
-    display: none;
+  .rewardsItemText {
+    font-size: 16px;
   }
 
   .receivePanel {
@@ -405,6 +413,25 @@
     font-size: 26px;
     line-height: 133%;
     margin-top: 5px;
+  }
+
+  .receiveValueText {
+    font-size: 22px;
+  }
+
+  .receiveValuePoints {
+    font-size: 22px;
+  }
+
+  .receiveValueImg {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+  }
+
+  .receiveValueImg img {
+    height: 16px;
+    width: 16px;
   }
 
   .return {
