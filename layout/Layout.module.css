@@ -105,6 +105,27 @@
   margin-left: 30px;
 }
 
+.noAccountTestNet {
+  width: 172px;
+  height: 42px;
+  background: #D3D3D3;
+  border: 1px solid #696767;
+  border-radius: 9px;
+  color: #424040;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 133.1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.noAccountTestNet img {
+  height: 19px;
+  margin-left: 15px;
+}
+
 /* ----------------------------------------------------------*/
 
 .ReactCollapse--collapse {

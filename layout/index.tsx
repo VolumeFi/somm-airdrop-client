@@ -179,11 +179,14 @@ export default function Layout({
                   </div>
                   <span>Introducing SOMM</span>
                   <h1>Sommelier Airdrop</h1>
+                  <div className={styles.noAccountTestNet}>
+                    Testnet<img src="/assets/circle.png" />
+                  </div>
                   <Button
                     className={styles.noAccountConnect}
                     onClick={(e) => handleConnectNetwork()}
                   >
-                    Connect to Wallet<img src="/assets/right-arrow.png" />
+                    Connect to Wallet (Testnet)<img src="/assets/right-arrow.png" />
                   </Button>
                 </div>
               </div>
