@@ -45,10 +45,10 @@ const OsmosisReward = ({ onBack, address}) => {
         <>
           <AlertPanel type="success" text="This wallet address is eligible for the airdrop!" />
           <h2>SOMM Osmosis Rewards </h2>
-          <p>Your Osmosis wallet was eligible for the airdrop. The number of tokens written below was sent to your wallet address.</p>
+          <p>Your Osmosis wallet is eligible for the airdrop. The number of tokens written below is being sent to your wallet address.</p>
 
           <div className={styles.receivePanel}>
-            <p>You have received</p>
+            <p>You will be sent</p>
             <div className={styles.receiveValue}>
               <span className={styles.receiveValueText}>{`${numberWithCommas(getOnlyDigitalValue(rewards.toNumber()))}${getOnlyPointsValue(rewards.toNumber()) > 0 ? '.' : ''}`}</span>
               <span className={styles.receiveValuePoints}>{getOnlyPointsValue(rewards.toNumber()).toFixed(7).substring(2)}</span>
@@ -61,7 +61,7 @@ const OsmosisReward = ({ onBack, address}) => {
           <a
             className={styles.share}
             target="_blank"
-            href={`https://twitter.com/intent/tweet?text=I%20just%20claimed%20${rewards.toFormat(2)}%20$SOMM%20from%20@sommfinance.%20Cheers!`}
+            href={`https://twitter.com/intent/tweet?text=${rewards.toFormat(2)}%20$SOMM%20were%20sent%20to%20my%20Osmosis%20wallet%20@sommfinance.%20Cheers!`}
           >
             <span>Share the Good News</span>
             <img src="/assets/twitter.png" />
