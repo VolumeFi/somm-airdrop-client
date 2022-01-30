@@ -48,7 +48,7 @@ const ClaimAmount = ({
           onClick={(e) => onStartClaim()}
         >
           <span>Start your claim process</span>
-          <img src='assets/right-arrow.png' />
+          <img src='/assets/right-arrow.png' />
         </Button>
       </div>
     </>

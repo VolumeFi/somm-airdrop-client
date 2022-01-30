@@ -15,6 +15,8 @@ export const SOMM_PAIRING_PARTICIPATION_REWARDS: BigNumber = new BigNumber(
   3632
 );
 
+export const REWARDS_DOMINATOR = 10 ** 6
+
 export const getAirdropRewards = (address: string): IAirdropRewards => {
   const rewards = {
     sommPairingParticipation: new BigNumber(0),
@@ -24,7 +26,8 @@ export const getAirdropRewards = (address: string): IAirdropRewards => {
   };
 
   if (address in SommRewards) {
-    const sommRewards = new BigNumber(SommRewards[address]);
+    const sommRewards = new BigNumber(SommRewards[address]).dividedBy(REWARDS_DOMINATOR);
+
     if (sommRewards.comparedTo(SOMM_PAIRING_PARTICIPATION_REWARDS) >= 0) {
       rewards.sommPairingParticipation = SOMM_PAIRING_PARTICIPATION_REWARDS;
       rewards.sommPairingPositionWeighted = sommRewards.minus(
@@ -36,7 +39,7 @@ export const getAirdropRewards = (address: string): IAirdropRewards => {
   }
 
   if (address in UniswapRewards) {
-    rewards.uniswapV3LP = new BigNumber(UniswapRewards[address]);
+    rewards.uniswapV3LP = new BigNumber(UniswapRewards[address]).dividedBy(REWARDS_DOMINATOR);
   }
 
   rewards.total = rewards.sommPairingParticipation
@@ -48,7 +51,7 @@ export const getAirdropRewards = (address: string): IAirdropRewards => {
 
 export const getOsmosisRewards = (address: string): BigNumber => {
   if (address in OsmosisRewards) {
-    return new BigNumber(OsmosisRewards[address])
+    return new BigNumber(OsmosisRewards[address]).dividedBy(REWARDS_DOMINATOR);
   }
 
   return new BigNumber(0)
@@ -60,29 +63,19 @@ export const sortRewardsData = () => {
   // Merge 2 jsons
   Object.keys(SommRewards).forEach((item) => {
     if (item in allRewards) {
-      allRewards[item] = allRewards[item].plus(
-        new BigNumber(SommRewards[item]).multipliedBy(
-          new BigNumber(Math.pow(10, 18))
-        )
-      );
+      allRewards[item] = allRewards[item].plus(new BigNumber(SommRewards[item]));
     } else {
-      allRewards[item] = new BigNumber(SommRewards[item]).multipliedBy(
-        new BigNumber(Math.pow(10, 18))
-      );
+      allRewards[item] = new BigNumber(SommRewards[item]);
     }
   });
 
   Object.keys(UniswapRewards).forEach((item) => {
     if (item in allRewards) {
       allRewards[item] = allRewards[item].plus(
-        new BigNumber(UniswapRewards[item]).multipliedBy(
-          new BigNumber(Math.pow(10, 18))
-        )
+        new BigNumber(UniswapRewards[item])
       );
     } else {
-      allRewards[item] = new BigNumber(UniswapRewards[item]).multipliedBy(
-        new BigNumber(Math.pow(10, 18))
-      )
+      allRewards[item] = new BigNumber(UniswapRewards[item])
     }
   });
 
