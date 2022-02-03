@@ -35,7 +35,7 @@ const ClaimRewards = ({ rewards, library }) => {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.homeIcon}>
-        <img src='assets/sommelier.png' />
+        <img src='/assets/sommelier.png' />
       </div>
       {step === 0 && <ClaimAmount rewards={rewards} onStartClaim={() => setStep(step + 1)} />}
       {step === 1 && <CommunityDistribution onNext={() => setStep(step + 1)} onBack={() => setStep(step - 1)} />}

@@ -3,7 +3,7 @@ import BigNumber from 'bignumber.js';
 
 import { IAirdropRewards } from '../../utils/airdrop';
 import { numberWithCommas, getOnlyDigitalValue, getOnlyPointsValue } from '../../utils/number';
-import { getMerkleProof } from '../../utils/merkletree'
+import { getMerkleProof, getMerkleRoot } from '../../utils/merkletree'
 import Button from '../Button/Button';
 
 import styles from 'styles/Airdrop.module.css';
@@ -14,7 +14,7 @@ const NotClaimed = ({ onBack, onRetry, loading }) => (
     <p>Please approve the transaction to claim your tokens.</p>
     {loading && (
       <div className={styles.transactionResult}>
-        <img src="assets/loading.gif" />
+        <img src="/assets/loading.gif" />
         <div className={styles.text}>
           <h3>Claiming tokens</h3>
           <p>This trasaction happens on-chain, and will require paying gas</p>
@@ -66,7 +66,7 @@ const AlreadyClaimed = ({ rewards, onRedirect }) => (
       href={`https://twitter.com/intent/tweet?text=I%20just%20claimed%20${rewards.total.toFormat(2)}%20$SOMM%20from%20@sommfinance.%20Cheers!`}
     >
       <span>Share the Good News</span>
-      <img src="assets/twitter.png" />
+      <img src="/assets/twitter.png" />
     </a>
 
     <Button className={styles.return} onClick={(e) => onRedirect()}>Return to home page</Button>
@@ -88,7 +88,7 @@ const TransactionSuccess = ({ rewards, onRedirect }) => (
       href={`https://twitter.com/intent/tweet?text=I%20just%20claimed%20${rewards.total.toFormat(2)}%20$SOMM%20from%20@sommfinance.%20Cheers!`}
     >
       <span>Share the Good News</span>
-      <img src="assets/twitter.png" />
+      <img src="/assets/twitter.png" />
     </a>
 
     <Button className={styles.return} onClick={(e) => onRedirect()}>Return to home page</Button>
@@ -111,6 +111,9 @@ const ConfirmWallet = ({
   const [transactionStatus, setTransactionStatus] = useState<boolean>(false)
 
   const handleClaim = async () => {
+    // const root = getMerkleRoot()
+    // console.log('merkle root', root)
+
     const proof = getMerkleProof(library.wallet.address)
 
     console.log('amount', proof.amount)

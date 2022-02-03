@@ -30,7 +30,7 @@ const CommunityDistribution = ({
       <p>At a high level, all three types of wallet addresses receive a reward based on the amount of liquidity and duration (how long they provided that liquidity).</p>
       <p>Sommelier Pairings app wallets, additionally receive a <strong>flat participation reward</strong>. The distribution is meant to reward and encourage early Sommelier wallets as well as to encourage LPs on Uniswap V3 and Osmosis to bring their liquidity to Sommelier for the upcoming launch of Cellars on Uniswap v3 and Osmosis.</p>
 
-      <img src='assets/token-chart.png' />
+      <img src='/assets/token-chart.png' />
 
       <div className={styles.buttonGroup}>
         <Button className={styles.backButton} onClick={(e) => onBack()}>
